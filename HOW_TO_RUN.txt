@@ -1,0 +1,70 @@
+================================================================================
+⚽ PICKUP SOCCER RSVP & CHECK-IN SYSTEM - STEP-BY-STEP GUIDE
+================================================================================
+
+This system helps you manage a 22-player pickup soccer game with a waiting list.
+It has two parts: 
+1. The BACKEND (Python) - The "brain" that stores data and enforces rules.
+2. The FRONTEND (Browser) - The interface where you click buttons.
+
+--------------------------------------------------------------------------------
+STEP 1: START THE BACKEND (THE "BRAIN")
+--------------------------------------------------------------------------------
+The backend MUST be running for the system to work.
+
+1. Open your terminal (PowerShell or CMD).
+2. Go to the project folder:
+   cd "C:\Users\dell\Desktop\Pickup Soccer RSVP App\backend"
+3. Run this command:
+   python -m uvicorn main:app --reload --host 0.0.0.0 --port 8000
+
+*Note: Keep this window open while you use the app!*
+
+--------------------------------------------------------------------------------
+STEP 2: OPEN THE INTERFACE (THE FRONTEND)
+--------------------------------------------------------------------------------
+Since you don't have Node.js installed, use the "Simple Mode" file I created.
+
+1. Go to this folder in your File Explorer:
+   "C:\Users\dell\Desktop\Pickup Soccer RSVP App"
+2. Find the file: RUN_WITHOUT_NODE.html
+3. Right-click it and select "Open with" -> "Google Chrome" (or any browser).
+
+--------------------------------------------------------------------------------
+STEP 3: HOW THE SYSTEM WORKS (THE LOGIC)
+--------------------------------------------------------------------------------
+
+1. RSVP (The Vote):
+   - Type a name and click "I'M IN".
+   - If spots (1-22) are free, the player is "CONFIRMED".
+   - If 22 players are already IN, the new player goes to the "WAITLIST".
+
+2. PAYMENT (Admin Action):
+   - On the "PLAYERS" tab, you will see a "💵 PAY" button.
+   - Click it when a player pays you. The badge changes to "PAID".
+
+3. CHECK-IN (Game Day):
+   - Once a player has PAID, a "📋 CHECK IN" button appears.
+   - Click it when the player arrives at the field.
+   - SYSTEM RULE: You cannot check-in if the player hasn't paid yet!
+
+4. WAITLIST PROMOTION:
+   - If a "CONFIRMED" player cancels (clicks "I'M OUT"), the system 
+     AUTOMATICALLY moves the first person from the Waitlist into the game!
+
+5. EXPORT DATA:
+   - Go to the "ADMIN" tab and click "📥 Export to CSV".
+   - This downloads a file with names, payment status, and EXACT timestamps 
+     of when they RSVP'd.
+
+--------------------------------------------------------------------------------
+SUMMARY OF RULES
+--------------------------------------------------------------------------------
+- Max Players: 22
+- Waitlist Ordering: By timestamp (First come, first served)
+- Check-in Permission: Only if PAID = YES
+- WhatsApp Ready: The backend logic is ready to connect to WhatsApp later.
+
+================================================================================
+DONE! You are now ready to manage your game like a pro. ⚽
+================================================================================
